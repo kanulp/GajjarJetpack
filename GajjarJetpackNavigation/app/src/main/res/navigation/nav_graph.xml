@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/bottom_navigation_first">
+
+
+    <fragment
+        android:id="@+id/bottom_navigation_first"
+        android:name="com.kanu_lp.gajjarjetpacknavigation.FirstFragment"
+        android:label="FirstFragment">
+        <action
+            android:id="@+id/action_firstFragment_to_passDataFragment"
+            app:destination="@id/passDataFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/bottom_navigation_second"
+        android:name="com.kanu_lp.gajjarjetpacknavigation.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second">
+
+    </fragment>
+    <fragment
+        android:id="@+id/bottom_navigation_third"
+        android:name="com.kanu_lp.gajjarjetpacknavigation.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third" />
+    <fragment
+        android:id="@+id/passDataFragment"
+        android:name="com.kanu_lp.gajjarjetpacknavigation.PassDataFragment"
+        android:label="PassDataFragment" >
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer"
+            />
+        <argument
+            android:name="pass"
+            android:defaultValue="p"
+            app:argType="string"
+            />
+        <action
+            android:id="@+id/action_passDataFragment_to_firstFragment"
+            app:destination="@id/bottom_navigation_first" />
+    </fragment>
+    <fragment
+        android:id="@+id/deepLinkFragment"
+        android:name="com.kanu_lp.gajjarjetpacknavigation.DeepLinkFragment"
+        android:label="DeepLinkFragment" >
+        <argument
+            android:name="name"
+            android:defaultValue="kanu_lp" />
+        <deepLink app:uri="https://twitter.com/{name}" />
+        <action
+            android:id="@+id/action_deepLinkFragment_to_passDataFragment"
+            app:destination="@id/passDataFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/passDataFragment" />
+
+    </fragment>
+</navigation>
